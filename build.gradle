@@ -7,7 +7,6 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    google()  // Google's Maven repository
 }
 sourceSets {
     main {
@@ -19,5 +18,4 @@ sourceSets {
 dependencies {
     implementation 'junit:junit:4.12'
     implementation 'com.google.firebase:firebase-admin:9.0.0'
-    implementation 'com.google.gms:google-services:4.3.13'
 }
