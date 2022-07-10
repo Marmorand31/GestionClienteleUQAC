@@ -43,7 +43,7 @@ public class ControllerAuthentication {
 
             MainApplication.loggedIn = true;
             MainApplication.adminRole = rs.getInt("admin") == 1;
-
+            MainApplication.accueil.Login();
             return true;
 
         } catch(SQLException e) {

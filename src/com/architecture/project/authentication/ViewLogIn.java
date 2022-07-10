@@ -12,8 +12,7 @@ import javax.swing.*;
 public class ViewLogIn {
 
 
-    // TODO : Form to log in the app
-
+    // Form to log in the app
     ControllerAuthentication CA = new ControllerAuthentication();
 
     public JPanel display() {
@@ -22,7 +21,7 @@ public class ViewLogIn {
         panelLogin.setLayout(null);
 
         JLabel headerLabel = new JLabel("Connexion");
-        headerLabel.setBounds(375,160, 100, 40);
+        headerLabel.setBounds(370,160, 100, 40);
         panelLogin.add(headerLabel);
 
         JLabel loginLabel = new JLabel("Identifiant");
@@ -42,17 +41,20 @@ public class ViewLogIn {
         JButton loginButton = new JButton("Valider");
         loginButton.setBounds(350, 320, 100, 25);
         panelLogin.add(loginButton);
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setBounds(280,350, 250, 25);
+        errorLabel.setForeground(Color.red);
+        panelLogin.add(errorLabel);
 
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                errorLabel.setText("");
                 String login = loginField.getText();
                 String password = passwordField.getText();
 
-                if(CA.Authentication(login, password)){
-                    MainApplication.accueil.Login();
-                }else{
-                    // TODO: 10/07/2022 Message d'erreur
+                if(!CA.Authentication(login, password)){
+                    errorLabel.setText("Identifiant ou Mot de passe incorrect !");
                 }
             }
         });
