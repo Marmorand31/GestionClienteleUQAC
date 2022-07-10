@@ -1,5 +1,6 @@
 package com.architecture.project;
 
+import com.architecture.project.authentication.ControllerAuthentication;
 import com.architecture.project.authentication.ViewLogIn;
 import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;
@@ -62,6 +63,7 @@ public class Accueil {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 cl.show(panelCont, "2");
+                MainApplication.controllerAuthentication.disconnect();
             }
         });
 

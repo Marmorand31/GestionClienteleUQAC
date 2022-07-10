@@ -14,8 +14,6 @@ public class ViewLogIn {
 
     // TODO : Form to log in the app
 
-    ControllerAuthentication CA = new ControllerAuthentication();
-
     public JPanel display() {
         JPanel panelLogin = new JPanel();
         panelLogin.setBackground(Color.YELLOW);
@@ -49,7 +47,7 @@ public class ViewLogIn {
                 String login = loginField.getText();
                 String password = passwordField.getText();
 
-                if(CA.Authentication(login, password)){
+                if(MainApplication.controllerAuthentication.Authentication(login, password)){
                     MainApplication.accueil.Login();
                 }else{
                     // TODO: 10/07/2022 Message d'erreur
