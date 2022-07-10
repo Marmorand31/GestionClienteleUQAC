@@ -1,5 +1,8 @@
 package com.architecture.project;
 
+import com.architecture.project.usersCRUD.ViewUserDisplay;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,49 +10,39 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
+public class Accueil {
+    JFrame frame = new JFrame("CardLayout demo");
+    JPanel panelCont = new JPanel();
+    JPanel panelFirst = new JPanel();
+    //JPanel panelSecond = new JPanel();
+    JButton buttonOne = new JButton("Switch to second panel/workspace");
+    //JButton buttonSecond = new JButton("Switch to first panel/workspace");
+    CardLayout cl = new CardLayout();
 
-public class Accueil extends JFrame{
-    //Les deux panels de ta fenetre
-    JPanel panelAccueil = new JPanel();
-    JPanel panelAffichageClients = new JPanel();
-    //Le bouton qui va changer le panel
-    JButton bChangerPanel = new JButton("Tester changement");
+    public Accueil() {
+        panelCont.setLayout(cl);
 
-    //Constructeur de ta fenêtre
-    public Accueil(){
-        //Paramètres (tu règles selon tes envies)
-        super("Fenetre de test");
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-        //Ecouteur sur le bouton
-        this.bChangerPanel.addActionListener(new EcouteurBoutonChanger());
-        //Par défaut, on place le bouton dans le premier panel qui est dans la fenêtre
-        this.panelAccueil.add(this.bChangerPanel);
-        this.setContentPane(this.panelAccueil);
-        //Couleur des panels (pour voir le changement)
-        this.panelAccueil.setBackground(Color.red);
-        this.panelAffichageClients.setBackground(Color.blue);
-    }
+        panelFirst.add(buttonOne);
+        panelFirst.setBackground(Color.BLUE);
+        ViewUserDisplay view = new ViewUserDisplay();
+        JPanel userDisplay = view.display();
+        panelCont.add(panelFirst, "1");
+        panelCont.add(userDisplay, "2");
+        cl.show(panelCont, "1");
 
-    //Méthode qui change le panel de ta fenêtre
-    public void changerMenu(){
-        this.setContentPane(this.panelAffichageClients);
-        this.revalidate();
-    }
+        buttonOne.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(panelCont, "2");
+            }
+        });
 
-    //Ecouteur de ton bouton
-    public class EcouteurBoutonChanger implements ActionListener{
-        public void actionPerformed(ActionEvent clic) {
-            //Appelle la méthode de changement de panel
-            Accueil.this.changerMenu();
-        }
-    }
+        frame.add(panelCont);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
-    //Lanceur
-    public static void main(String[] args){
-        Accueil fen = new Accueil();
     }
 }

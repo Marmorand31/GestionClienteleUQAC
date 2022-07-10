@@ -1,6 +1,7 @@
 package com.architecture.project;
 
 
+import javax.swing.*;
 
 public class MainApplication {
     public static void main(String[] args) {
