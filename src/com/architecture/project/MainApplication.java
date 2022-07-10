@@ -18,7 +18,7 @@ public class MainApplication {
 
         // Test Authentication
 //        ControllerAuthentication CA = new ControllerAuthentication();
-//        boolean exit = CA.Authentication("ramanda", "ramandapwd");
+//        boolean exit = CA.Authentication("dpaul", "dpaulpwd");
 //        System.out.println(exit);
 //        System.out.println();
 //        System.out.println("loggedIn : " + loggedIn);
