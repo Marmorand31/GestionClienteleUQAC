@@ -16,9 +16,7 @@ public class Accueil {
     JFrame frame = new JFrame("CardLayout demo");
     JPanel panelCont = new JPanel();
     JPanel panelFirst = new JPanel();
-    //JPanel panelSecond = new JPanel();
     JButton buttonOne = new JButton("Switch to second panel/workspace");
-    //JButton buttonSecond = new JButton("Switch to first panel/workspace");
     CardLayout cl = new CardLayout();
 
     public Accueil() {
