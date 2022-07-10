@@ -14,13 +14,6 @@ public class MainApplication {
 //        Select CustomerTableSelect = new Select("Customers");
 //        CustomerTableSelect.selectAll();
 
-        // Test Authentication
-//        ControllerAuthentication CA = new ControllerAuthentication();
-//        boolean exit = CA.Authentication("ramanda", "ramandapwd");
-//        System.out.println(exit);
-//        System.out.println();
-//        System.out.println("loggedIn : " + loggedIn);
-//        System.out.println("adminRole : " + adminRole);
 
     }
 }

@@ -1,5 +1,7 @@
 package com.architecture.project.authentication;
 
+import com.architecture.project.MainApplication;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,14 +11,12 @@ import javax.swing.*;
 public class ViewLogIn {
 
     // TODO : Form to log in the app
+
+    ControllerAuthentication CA = new ControllerAuthentication();
+
     public JPanel display() {
         JPanel panelLogin = new JPanel();
         panelLogin.setBackground(Color.YELLOW);
-
-
-//        JLabel label = new JLabel("Je suis un JLabel", JLabel.CENTER);
-//        panelLogin.add(label);
-
         panelLogin.setLayout(null);
 
         JLabel headerLabel = new JLabel("Connexion");
@@ -41,10 +41,20 @@ public class ViewLogIn {
         loginButton.setBounds(350, 320, 100, 25);
         panelLogin.add(loginButton);
 
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                String login = loginField.getText();
+                String password = passwordField.getText();
 
+                boolean exit = CA.Authentication(login, password);
 
-
-
+                System.out.println(exit);
+                System.out.println();
+                System.out.println("loggedIn : " + MainApplication.loggedIn);
+                System.out.println("adminRole : " + MainApplication.adminRole);
+            }
+        });
 
         return panelLogin;
     }
