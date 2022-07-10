@@ -6,7 +6,7 @@ public class MainApplication {
         System.out.println("Welcome in a functioning project !!! :)");
 
 
-        Select CustomerTableSelect = new Select();
+        Select CustomerTableSelect = new Select("Customers");
         CustomerTableSelect.selectAll();
     }
 }
