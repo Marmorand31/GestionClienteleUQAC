@@ -1,5 +1,6 @@
 package com.architecture.project.authentication;
 
+import com.architecture.project.Accueil;
 import com.architecture.project.MainApplication;
 
 import java.awt.*;
@@ -48,12 +49,11 @@ public class ViewLogIn {
                 String login = loginField.getText();
                 String password = passwordField.getText();
 
-                boolean exit = CA.Authentication(login, password);
-
-                System.out.println(exit);
-                System.out.println();
-                System.out.println("loggedIn : " + MainApplication.loggedIn);
-                System.out.println("adminRole : " + MainApplication.adminRole);
+                if(CA.Authentication(login, password)){
+                    MainApplication.accueil.Login();
+                }else{
+                    // TODO: 10/07/2022 Message d'erreur
+                }
             }
         });
 

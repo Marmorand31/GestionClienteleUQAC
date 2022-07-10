@@ -1,7 +1,6 @@
 package com.architecture.project;
 
 import com.architecture.project.authentication.ViewLogIn;
-import com.architecture.project.authentication.ViewLogOut;
 import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;
 import com.architecture.project.usersCRUD.ViewUserDisplay;
@@ -13,7 +12,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class Accueil {
     JFrame frame = new JFrame("CardLayout demo");
@@ -43,22 +41,22 @@ public class Accueil {
         bLogOut.setBounds(630,510,140,40);
         panelHome.add(bLogOut);
 
-        ViewLogOut viewLogOut = new ViewLogOut();
+        ViewLogIn viewLogIn = new ViewLogIn();
         ViewCustomerDisplay viewCustomerDisplay = new ViewCustomerDisplay();
         ViewSearchTool viewSearchTool = new ViewSearchTool();
         ViewUserDisplay viewUserDisplay = new ViewUserDisplay();
 
-        JPanel panelLogOut = viewLogOut.display();
+        JPanel panelLogIn = viewLogIn.display();
         JPanel panelCustomerDisplay = viewCustomerDisplay.display();
         JPanel panelUSearchTool = viewSearchTool.display();
         JPanel panelUserDisplay = viewUserDisplay.display();
 
         panelCont.add(panelHome, "1");
-        panelCont.add(panelLogOut, "2");
+        panelCont.add(panelLogIn, "2");
         panelCont.add(panelCustomerDisplay, "3");
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
-        cl.show(panelCont, "1");
+        cl.show(panelCont, "2");
 
         bLogOut.addActionListener(new ActionListener() {
             @Override
@@ -94,5 +92,9 @@ public class Accueil {
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    public void Login(){
+        cl.show(panelCont, "1");
     }
 }
