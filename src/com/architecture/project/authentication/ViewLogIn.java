@@ -1,6 +1,5 @@
 package com.architecture.project.authentication;
 
-import com.architecture.project.Accueil;
 import com.architecture.project.MainApplication;
 
 import java.awt.*;
@@ -10,10 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class ViewLogIn {
-
-
-    // TODO : Form to log in the app
-
     public JPanel display() {
         JPanel panelLogin = new JPanel();
         panelLogin.setBackground(Color.YELLOW);
@@ -41,17 +36,22 @@ public class ViewLogIn {
         loginButton.setBounds(350, 320, 100, 25);
         panelLogin.add(loginButton);
 
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setBounds(280,350, 250, 25);
+        errorLabel.setForeground(Color.red);
+        panelLogin.add(errorLabel);
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                errorLabel.setText("");
                 String login = loginField.getText();
                 String password = passwordField.getText();
 
-                if(MainApplication.controllerAuthentication.Authentication(login, password)){
-                    MainApplication.accueil.Login();
-                }else{
-                    // TODO: 10/07/2022 Message d'erreur
+                if(!MainApplication.controllerAuthentication.Authentication(login, password)){
+                    errorLabel.setText("Identifiant ou Mot de passe incorrect !");
                 }
+
             }
         });
 
