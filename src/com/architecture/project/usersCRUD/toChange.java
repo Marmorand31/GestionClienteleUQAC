@@ -1,4 +1,4 @@
-package com.architecture.project.authentication;
+package com.architecture.project.usersCRUD;
 
 // Placeholder à modifier quand nécessaire
 

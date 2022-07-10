@@ -1,4 +1,4 @@
-package com.architecture.project.usersCRUD;
+package com.architecture.project.authentication;
 
 public class LogOutView {
 

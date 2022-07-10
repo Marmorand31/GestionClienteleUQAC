@@ -1,14 +1,14 @@
-package com.architecture.project.usersCRUD;
+package com.architecture.project.authentication;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class UsersCrudController {
+public class ControllerAuthentication {
 
     String bddUrl;
 
-    public UsersCrudController() { this.bddUrl = "jdbc:sqlite:C:/sqlite/BDDUser.db"; }
+    public ControllerAuthentication() { this.bddUrl = "jdbc:sqlite:C:/sqlite/BDDUser.db"; }
 
     // Database connection
     private Connection connect() {
