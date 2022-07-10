@@ -1,12 +1,12 @@
 package com.architecture.project;
 
+
+
 public class MainApplication {
     public static void main(String[] args) {
 
         System.out.println("Welcome in a functioning project !!! :)");
+        new Accueil();
 
-
-        Select CustomerTableSelect = new Select("Customers");
-        CustomerTableSelect.selectAll();
     }
 }
