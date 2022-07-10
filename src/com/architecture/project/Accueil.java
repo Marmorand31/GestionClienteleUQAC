@@ -1,6 +1,5 @@
 package com.architecture.project;
 
-import com.architecture.project.authentication.ControllerAuthentication;
 import com.architecture.project.authentication.ViewLogIn;
 import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;

@@ -1,9 +1,6 @@
 package com.architecture.project.authentication;
 
 import com.architecture.project.MainApplication;
-import com.sun.tools.javac.Main;
-
-import java.security.PublicKey;
 import java.sql.*;
 
 public class ControllerAuthentication {

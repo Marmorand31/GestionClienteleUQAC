@@ -3,7 +3,6 @@ package com.architecture.project;
 
 import com.architecture.project.authentication.ControllerAuthentication;
 
-import javax.swing.*;
 
 public class MainApplication {
     public static boolean loggedIn = false;
