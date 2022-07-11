@@ -60,7 +60,7 @@ public class Accueil {
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
         panelCont.add(panelUserCreation, "6");
-        cl.show(panelCont, "2");
+        cl.show(panelCont, "5");
 
         bLogOut.addActionListener(new ActionListener() {
             @Override

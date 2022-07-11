@@ -33,7 +33,9 @@ public class ViewUserDisplay {
 
         JTable table = new JTable(data,columns);
         table.setFillsViewportHeight(true);
-        panelUserDisplay.add(new JScrollPane(table));
+        JScrollPane js = new JScrollPane(table);
+        js.setBounds(50,150,700,400);
+        panelUserDisplay.add(js);
 
         return panelUserDisplay;
     }
