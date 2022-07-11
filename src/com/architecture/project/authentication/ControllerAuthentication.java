@@ -7,7 +7,6 @@ public class ControllerAuthentication {
 
     public Boolean Authentication(String login, String password) {
         String sql = "SELECT * FROM User WHERE LOGIN = '"+ login +"' AND PASSWORD = '"+ password +"'";
-
         try {
             Statement stmt = MainApplication.bddUserConn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

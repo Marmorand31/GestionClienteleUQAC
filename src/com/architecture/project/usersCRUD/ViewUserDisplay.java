@@ -1,28 +1,25 @@
 package com.architecture.project.usersCRUD;
 
 import com.architecture.project.MainApplication;
-import com.sun.tools.javac.Main;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-public class ViewUserDisplay{
+public class ViewUserDisplay {
 
     public JPanel display() {
-        JPanel userDisplayPanel = new JPanel();
-        userDisplayPanel.setLayout(null);
+        JPanel panelUserDisplay = new JPanel();
+        panelUserDisplay.setLayout(null);
 
         JLabel headerLabel = new JLabel("Gestion des utilisateurs");
         headerLabel.setBounds(330,40,180,40);
-        userDisplayPanel.add(headerLabel);
+        panelUserDisplay.add(headerLabel);
 
 
         JButton addButton = new JButton("Nouvel utilisateur");
         addButton.setBounds(30,100,180,30);
-        userDisplayPanel.add(addButton);
+        panelUserDisplay.add(addButton);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -30,7 +27,15 @@ public class ViewUserDisplay{
                 MainApplication.accueil.UserCRUD("creation");
             }
         });
+        Object[][] data = MainApplication.controllerUser.selectAll();
 
-        return userDisplayPanel;
+        String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password"};
+
+        JTable table = new JTable(data,columns);
+        table.setFillsViewportHeight(true);
+        panelUserDisplay.add(new JScrollPane(table));
+
+        return panelUserDisplay;
     }
 }
+

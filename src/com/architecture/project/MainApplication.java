@@ -15,9 +15,7 @@ public class MainApplication {
     public static Accueil accueil;
     public static ControllerAuthentication controllerAuthentication;
     public static ControllerUser controllerUser;
-
     public static Connection bddUserConn;
-
 
     public static void main(String[] args) {
 
