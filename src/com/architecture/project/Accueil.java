@@ -10,9 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Accueil {
     JFrame frame = new JFrame("CardLayout demo");
@@ -31,16 +29,22 @@ public class Accueil {
     ViewUserDisplay viewUserDisplay = new ViewUserDisplay();
     ViewUserCreation viewUserCreation = new ViewUserCreation();
 
+
     JPanel panelLogIn;
     JPanel panelCustomerDisplay;
     JPanel panelUSearchTool;
     JPanel panelUserDisplay;
     JPanel panelUserCreation;
+    JLabel errorLabel = new JLabel("");
+
 
     public Accueil() {
         panelCont.setLayout(cl);
 
         panelHome.setLayout(null);
+        errorLabel.setBounds(180,200,500,40);
+        errorLabel.setForeground(Color.red);
+        panelHome.add(errorLabel);
 
         bUserDisplay.setBounds(310,150,180,40);
         panelHome.add(bUserDisplay);
@@ -66,6 +70,7 @@ public class Accueil {
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
         panelCont.add(panelUserCreation, "6");
+
         cl.show(panelCont, "2");
 
         bLogOut.addActionListener(new ActionListener() {
@@ -93,7 +98,13 @@ public class Accueil {
         bUserDisplay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                cl.show(panelCont, "5");
+                errorLabel.setText("");
+                if (MainApplication.adminRole == true){
+                    cl.show(panelCont, "5");
+                }else{
+                    errorLabel.setText("Vous n'avez pas les autorisations nécessaires pour accéder à cette fonctionnalité !");
+                }
+
             }
         });
 
@@ -115,6 +126,10 @@ public class Accueil {
         }
         if (cmd == "creation") cl.show(panelCont, "6");
 //        if (cmd == "update") cl.show(panelCont, "7");         A créer
+        if (cmd == "delete"){
+            this.RefreshUserDisplay();
+            cl.show(panelCont, "5");
+        }
     }
 
     public void RefreshUserDisplay() {
