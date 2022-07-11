@@ -1,9 +1,6 @@
 package com.architecture.project.usersCRUD;
 
 import com.architecture.project.MainApplication;
-import com.sun.tools.javac.Main;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -46,7 +43,7 @@ public class ViewUserDisplay {
         });
         Object[][] data = MainApplication.controllerUser.selectAll();
 
-        String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password"};
+        String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password", "Login"};
 
         JTable table = new JTable(data,columns);
         table.setFillsViewportHeight(true);

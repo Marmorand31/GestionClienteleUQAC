@@ -1,6 +1,7 @@
 package com.architecture.project;
 
 import com.architecture.project.authentication.ViewLogIn;
+import com.architecture.project.clientsCRUD.ViewCustomerCreation;
 import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;
 import com.architecture.project.usersCRUD.ViewUserCreation;
@@ -28,6 +29,7 @@ public class Accueil {
     ViewSearchTool viewSearchTool = new ViewSearchTool();
     ViewUserDisplay viewUserDisplay = new ViewUserDisplay();
     ViewUserCreation viewUserCreation = new ViewUserCreation();
+    ViewCustomerCreation viewCustomerCreation = new ViewCustomerCreation();
 
 
     JPanel panelLogIn;
@@ -36,6 +38,7 @@ public class Accueil {
     JPanel panelUserDisplay;
     JPanel panelUserCreation;
     JLabel errorLabel = new JLabel("");
+    JPanel panelCustomerCreation;
 
 
     public Accueil() {
@@ -63,6 +66,7 @@ public class Accueil {
         panelUSearchTool = viewSearchTool.display();
         panelUserDisplay = viewUserDisplay.display();
         panelUserCreation = viewUserCreation.display();
+        panelCustomerCreation = viewCustomerCreation.display();
 
         panelCont.add(panelHome, "1");
         panelCont.add(panelLogIn, "2");
@@ -70,6 +74,9 @@ public class Accueil {
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
         panelCont.add(panelUserCreation, "6");
+        //7 for user update
+        panelCont.add(panelCustomerCreation, "8");
+        //9 for customer update
 
         cl.show(panelCont, "2");
 
@@ -131,9 +138,21 @@ public class Accueil {
             cl.show(panelCont, "5");
         }
     }
-
     public void RefreshUserDisplay() {
         panelUserDisplay = viewUserDisplay.display();
         panelCont.add(panelUserDisplay, "5");
+    }
+
+    public void CustomerCRUD(String cmd) {
+        if (cmd == "display"){
+            this.RefreshCustomerDisplay();
+            cl.show(panelCont, "3");
+        }
+        if (cmd == "creation") cl.show(panelCont, "8");
+//        if (cmd == "update") cl.show(panelCont, "9");         A créer
+    }
+    public void RefreshCustomerDisplay() {
+        panelCustomerDisplay = viewCustomerDisplay.display();
+        panelCont.add(panelCustomerDisplay, "3");
     }
 }
