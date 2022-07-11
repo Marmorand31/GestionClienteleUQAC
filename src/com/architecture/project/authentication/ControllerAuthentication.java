@@ -22,11 +22,13 @@ public class ControllerAuthentication {
 
     public Boolean Authentication(String login, String password) {
         String sql = "SELECT * FROM User WHERE LOGIN = '"+ login +"' AND PASSWORD = '"+ password +"'";
-
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
         try {
-            Connection conn = this.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            conn = this.connect();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
 
             if (!rs.next()) {   // No result found
                 System.out.println("Authentication failed...");
@@ -47,6 +49,10 @@ public class ControllerAuthentication {
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+        }finally {
+            try { rs.close(); } catch (Exception e) { /* Ignored */ }
+            try { stmt.close(); } catch (Exception e) { /* Ignored */ }
+            try { conn.close(); } catch (Exception e) { /* Ignored */ }
         }
 
         System.out.println("Authentication failed...");
