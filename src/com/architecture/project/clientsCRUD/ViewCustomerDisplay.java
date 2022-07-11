@@ -29,15 +29,30 @@ public class ViewCustomerDisplay {
         headerLabel.setBounds(330,40,180,40);
         panelCustomerDisplay.add(headerLabel);
 
-
         JButton addButton = new JButton("Nouveau client");
         addButton.setBounds(30,100,180,30);
         panelCustomerDisplay.add(addButton);
+
+        JButton delButton = new JButton("Supprimer un utilisateur");
+        delButton.setBounds(250,100,180,30);
+        panelCustomerDisplay.add(delButton);
+
+        JTextField delTextField = new JTextField("");
+        delTextField.setBounds(440,100,30,30);
+        panelCustomerDisplay.add(delTextField);
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 MainApplication.accueil.CustomerCRUD("creation");
+            }
+        });
+
+        delButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                MainApplication.controllerCustomer.DeleteUser(Integer.valueOf(delTextField.getText()));
+                MainApplication.accueil.CustomerCRUD("display");
             }
         });
 

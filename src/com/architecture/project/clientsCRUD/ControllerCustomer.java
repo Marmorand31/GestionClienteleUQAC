@@ -86,4 +86,17 @@ public class ControllerCustomer {
 
         return Arrays.asList(success, errorMessage);
     }
+    public void DeleteUser(int id){
+        String sql = "DELETE FROM Customers WHERE ID = " + id;
+        System.out.println(sql);
+
+        try {
+            Statement stmt = MainApplication.bddCustomerConn.createStatement();
+            stmt.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }

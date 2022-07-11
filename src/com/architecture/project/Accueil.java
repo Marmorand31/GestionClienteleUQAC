@@ -137,10 +137,7 @@ public class Accueil {
         }
         if (cmd == "creation") cl.show(panelCont, "6");
 //        if (cmd == "update") cl.show(panelCont, "7");         A créer
-        if (cmd == "delete"){
-            this.RefreshUserDisplay();
-            cl.show(panelCont, "5");
-        }
+
     }
     public void RefreshUserDisplay() {
         panelUserDisplay = viewUserDisplay.display();

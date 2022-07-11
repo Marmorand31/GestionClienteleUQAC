@@ -49,7 +49,7 @@ public class ViewUserDisplay {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 MainApplication.controllerUser.DeleteUser(Integer.valueOf(delTextField.getText()));
-                MainApplication.accueil.UserCRUD("delete");
+                MainApplication.accueil.UserCRUD("display");
             }
         });
 
