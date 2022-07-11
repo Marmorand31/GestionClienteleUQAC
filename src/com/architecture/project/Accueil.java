@@ -3,6 +3,7 @@ package com.architecture.project;
 import com.architecture.project.authentication.ViewLogIn;
 import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;
+import com.architecture.project.usersCRUD.ViewUserCreation;
 import com.architecture.project.usersCRUD.ViewUserDisplay;
 
 import java.awt.*;
@@ -45,18 +46,21 @@ public class Accueil {
         ViewCustomerDisplay viewCustomerDisplay = new ViewCustomerDisplay();
         ViewSearchTool viewSearchTool = new ViewSearchTool();
         ViewUserDisplay viewUserDisplay = new ViewUserDisplay();
+        ViewUserCreation viewUserCreation = new ViewUserCreation();
 
         JPanel panelLogIn = viewLogIn.display();
         JPanel panelCustomerDisplay = viewCustomerDisplay.display();
         JPanel panelUSearchTool = viewSearchTool.display();
         JPanel panelUserDisplay = viewUserDisplay.display();
+        JPanel panelUserCreation = viewUserCreation.display();
 
         panelCont.add(panelHome, "1");
         panelCont.add(panelLogIn, "2");
         panelCont.add(panelCustomerDisplay, "3");
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
-        cl.show(panelCont, "2");
+        panelCont.add(panelUserCreation, "6");
+        cl.show(panelCont, "6"); // 2
 
         bLogOut.addActionListener(new ActionListener() {
             @Override
@@ -97,5 +101,10 @@ public class Accueil {
 
     public void Login(){
         cl.show(panelCont, "1");
+    }
+    public void UserCRUD(String cmd) {
+        if (cmd == "display") cl.show(panelCont, "5");
+        if (cmd == "creation") cl.show(panelCont, "6");
+//        if (cmd == "update") cl.show(panelCont, "7");         A créer
     }
 }

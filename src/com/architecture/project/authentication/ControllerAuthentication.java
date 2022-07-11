@@ -59,9 +59,4 @@ public class ControllerAuthentication {
         System.out.println("disconnected successfully");
     }
 
-
-    // TODO : LOG OUT, reset MainApplication variables loggedIn and adminRole to default values, false and false
-    // public void LogOut() {}
-
-
 }
