@@ -1,7 +1,6 @@
 package com.architecture.project.usersCRUD;
 
 import com.architecture.project.MainApplication;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;

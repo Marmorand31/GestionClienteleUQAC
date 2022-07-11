@@ -2,6 +2,7 @@ package com.architecture.project;
 
 
 import com.architecture.project.authentication.ControllerAuthentication;
+import com.architecture.project.clientsCRUD.ControllerCustomer;
 import com.architecture.project.usersCRUD.ControllerUser;
 
 import java.sql.Connection;
@@ -15,8 +16,9 @@ public class MainApplication {
     public static Accueil accueil;
     public static ControllerAuthentication controllerAuthentication;
     public static ControllerUser controllerUser;
+    public static ControllerCustomer controllerCustomer;
     public static Connection bddUserConn;
-    public static Connection bddCustomer;
+    public static Connection bddCustomerConn;
 
     public static void main(String[] args) {
 
@@ -24,10 +26,11 @@ public class MainApplication {
 
         // Databases connection
         bddUserConn = connectUser();
-        bddCustomer = connectCustomer();
+        bddCustomerConn = connectCustomer();
 
         controllerAuthentication = new ControllerAuthentication();
         controllerUser = new ControllerUser();
+        controllerCustomer = new ControllerCustomer();
         accueil = new Accueil();
         // Test database connection
 //        Select CustomerTableSelect = new Select("Customers");
@@ -47,7 +50,7 @@ public class MainApplication {
         return conn;
     }
     private static Connection connectCustomer() {
-        String bddCustomerUrl = "jdbc:sqlite:C:/sqlite/BDDCustomers.dbb";
+        String bddCustomerUrl = "jdbc:sqlite:C:/sqlite/BDDCustomers.db";
 
         Connection conn = null;
         try {
