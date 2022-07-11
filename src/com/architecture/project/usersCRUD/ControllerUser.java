@@ -11,7 +11,7 @@ public class ControllerUser {
     public Object[][] selectAll() {
         String sql = "SELECT * FROM User";
         int size = numberofUsers();
-        Object[][] data = new Object[size][5];
+        Object[][] data = new Object[size][6];
 
         try {
             Statement stmt = MainApplication.bddUserConn.createStatement();
@@ -24,6 +24,7 @@ public class ControllerUser {
                 data[iter][2] = rs.getString("name");
                 data[iter][3] = rs.getInt("admin");
                 data[iter][4] = rs.getString("password");
+                data[iter][5] = rs.getString("login");
                 iter++;
             }
 

@@ -28,7 +28,7 @@ public class ViewUserDisplay {
         });
         Object[][] data = MainApplication.controllerUser.selectAll();
 
-        String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password"};
+        String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password", "Login"};
 
         JTable table = new JTable(data,columns);
         table.setFillsViewportHeight(true);
