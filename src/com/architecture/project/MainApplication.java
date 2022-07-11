@@ -16,6 +16,7 @@ public class MainApplication {
     public static ControllerAuthentication controllerAuthentication;
     public static ControllerUser controllerUser;
     public static Connection bddUserConn;
+    public static Connection bddCustomer;
 
     public static void main(String[] args) {
 
@@ -23,6 +24,7 @@ public class MainApplication {
 
         // Databases connection
         bddUserConn = connectUser();
+        bddCustomer = connectCustomer();
 
         controllerAuthentication = new ControllerAuthentication();
         controllerUser = new ControllerUser();
@@ -39,6 +41,17 @@ public class MainApplication {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(bddUserUrl);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+    private static Connection connectCustomer() {
+        String bddCustomerUrl = "jdbc:sqlite:C:/sqlite/BDDCustomers.dbb";
+
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(bddCustomerUrl);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
