@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ViewUserCreation {
 
@@ -67,38 +68,44 @@ public class ViewUserCreation {
         createButton.setBounds(410, 400, 100, 25);
         panelUCreation.add(createButton);
 
-        // TODO : listener bouton annuler
-        // TODO : listener bouton créer
-        // TODO : erreur si un champ text est vide
-        // TODO : erreur si les deux mdp sont différents
-
-        // TODO : calcul des erreurs dans la vue ou dans le controleur ???
-
-//        JLabel errorLabel = new JLabel("");
-//        errorLabel.setBounds(280,350, 250, 25);
-//        errorLabel.setForeground(Color.red);
-//        panelLogin.add(errorLabel);
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setBounds(180,450, 450, 25);
+        errorLabel.setForeground(Color.red);
+        panelUCreation.add(errorLabel);
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                errorLabel.setText("");
                 MainApplication.accueil.UserCRUD("display");
             }
         });
 
-//        loginButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent arg0) {
-//                errorLabel.setText("");
-//                String login = loginField.getText();
-//                String password = passwordField.getText();
-//
-//                if(!MainApplication.controllerAuthentication.Authentication(login, password)){
-//                    errorLabel.setText("Identifiant ou Mot de passe incorrect !");
-//                }
-//
-//            }
-//        });
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                errorLabel.setText("");
+
+                String surname = surnameField.getText();
+                String name = nameField.getText();
+                Boolean admin = adminCheckB.isSelected();
+                String login = loginField.getText();
+                String pwd = passwordField.getText();
+                String pwdConfirm = passwordConfirmField.getText();
+
+                List<Object> answer= MainApplication.controllerUser.CreateUser(surname, name, admin, login, pwd, pwdConfirm);
+                Boolean success = (Boolean) answer.get(0);
+                String errorMessage = (String) answer.get(1);
+
+                if(success) {
+                    MainApplication.accueil.UserCRUD("display");
+                } else {
+                    errorLabel.setText(errorMessage);
+                }
+
+            }
+        });
+
 
         return panelUCreation;
     }
