@@ -11,17 +11,28 @@ import java.awt.event.ActionListener;
 public class ViewCustomerDisplay {
 
     public JPanel display() {
-        JPanel panelCustopmerDisplay = new JPanel();
-        panelCustopmerDisplay.setLayout(null);
+        JPanel panelCustomerDisplay = new JPanel();
+        panelCustomerDisplay.setLayout(null);
+
+        JButton homeButton = new JButton("Retour Accueil");
+        homeButton.setBounds(10,10,130,30);
+        panelCustomerDisplay.add(homeButton);
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                MainApplication.accueil.BackHome();
+            }
+        });
 
         JLabel headerLabel = new JLabel("Gestion des clients");
         headerLabel.setBounds(330,40,180,40);
-        panelCustopmerDisplay.add(headerLabel);
+        panelCustomerDisplay.add(headerLabel);
 
 
         JButton addButton = new JButton("Nouveau client");
         addButton.setBounds(30,100,180,30);
-        panelCustopmerDisplay.add(addButton);
+        panelCustomerDisplay.add(addButton);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -38,8 +49,8 @@ public class ViewCustomerDisplay {
         table.setFillsViewportHeight(true);
         JScrollPane js = new JScrollPane(table);
         js.setBounds(50,150,700,400);
-        panelCustopmerDisplay.add(js);
+        panelCustomerDisplay.add(js);
 
-        return panelCustopmerDisplay;
+        return panelCustomerDisplay;
     }
 }

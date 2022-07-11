@@ -50,6 +50,9 @@ public class ViewLogIn {
 
                 if(!MainApplication.controllerAuthentication.Authentication(login, password)){
                     errorLabel.setText("Identifiant ou Mot de passe incorrect !");
+                } else {
+                    loginField.setText("");
+                    passwordField.setText("");
                 }
 
             }
