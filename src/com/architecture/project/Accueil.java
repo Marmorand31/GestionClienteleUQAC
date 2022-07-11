@@ -20,7 +20,7 @@ public class Accueil {
     JButton bLogOut = new JButton("Deconnexion");
     JButton bUserDisplay = new JButton("Gestion des utilisateurs");
     JButton bCustomerDisplay = new JButton("Gestion des clients");
-    JButton bCustomerSearch = new JButton("Recherches d'un client");
+    JButton bCustomerSearch = new JButton("Recherche d'un client");
 
     CardLayout cl = new CardLayout();
 
@@ -121,6 +121,10 @@ public class Accueil {
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    public void BackHome() {
+        cl.show(panelCont, "1");
     }
 
     public void Login(){

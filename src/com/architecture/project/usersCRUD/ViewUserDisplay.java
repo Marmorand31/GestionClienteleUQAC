@@ -11,6 +11,17 @@ public class ViewUserDisplay {
         JPanel panelUserDisplay = new JPanel();
         panelUserDisplay.setLayout(null);
 
+        JButton homeButton = new JButton("Retour Accueil");
+        homeButton.setBounds(10,10,130,30);
+        panelUserDisplay.add(homeButton);
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                MainApplication.accueil.BackHome();
+            }
+        });
+
         JLabel headerLabel = new JLabel("Gestion des utilisateurs");
         headerLabel.setBounds(330,40,180,40);
         panelUserDisplay.add(headerLabel);
@@ -41,6 +52,7 @@ public class ViewUserDisplay {
                 MainApplication.accueil.UserCRUD("delete");
             }
         });
+
         Object[][] data = MainApplication.controllerUser.selectAll();
 
         String[] columns = new String[]{"Id", "Surname", "Name", "Admin", "Password", "Login"};
