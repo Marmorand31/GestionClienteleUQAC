@@ -11,7 +11,6 @@ import javax.swing.*;
 public class ViewLogIn {
     public JPanel display() {
         JPanel panelLogin = new JPanel();
-        panelLogin.setBackground(Color.YELLOW);
         panelLogin.setLayout(null);
 
         JLabel headerLabel = new JLabel("Connexion");
