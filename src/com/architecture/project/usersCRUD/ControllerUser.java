@@ -114,9 +114,10 @@ public class ControllerUser {
         return Arrays.asList(success, errorMessage);
     }
 
-    public List<Object> UpdateUser(int id, String surname, String name, Boolean admin, String login, String pwd, String pwdConfirm) {
+    public List<Object> UpdateUser(String surname, String name, Boolean admin, String login, String pwd, String pwdConfirm) {
         Boolean success = false;
         String errorMessage = "Une erreur inconnue est survenue.";
+        int id = MainApplication.updateId;
 
         if (id<=0){
             errorMessage = "Une erreur inconnue est survenue. Quittez et réessayez.";
@@ -143,6 +144,7 @@ public class ControllerUser {
 
                 success = true;
                 errorMessage = "";
+                MainApplication.updateId = 0;
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -151,6 +153,7 @@ public class ControllerUser {
 
         return Arrays.asList(success, errorMessage);
     }
+
     public void DeleteUser(int id){
         String sql = "DELETE FROM User WHERE ID = " + id;
 

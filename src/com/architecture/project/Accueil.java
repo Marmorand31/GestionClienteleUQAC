@@ -1,8 +1,9 @@
 package com.architecture.project;
 
 import com.architecture.project.authentication.ViewLogIn;
-import com.architecture.project.clientsCRUD.ViewCustomerCreation;
-import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
+import com.architecture.project.customersCRUD.ViewCustomerCreation;
+import com.architecture.project.customersCRUD.ViewCustomerDisplay;
+import com.architecture.project.customersCRUD.ViewCustomerUpdate;
 import com.architecture.project.searchTool.ViewSearchTool;
 import com.architecture.project.usersCRUD.ViewUserCreation;
 import com.architecture.project.usersCRUD.ViewUserDisplay;
@@ -32,7 +33,7 @@ public class Accueil {
     ViewUserCreation viewUserCreation = new ViewUserCreation();
     ViewCustomerCreation viewCustomerCreation = new ViewCustomerCreation();
     ViewUserUpdate viewUserUpdate = new ViewUserUpdate();
-    ViewUserUpdate viewCustomerUpdate = new ViewUserUpdate();
+    ViewCustomerUpdate viewCustomerUpdate = new ViewCustomerUpdate();
 
 
     JPanel panelLogIn;
@@ -188,7 +189,7 @@ public class Accueil {
     }
     public void RefreshCustomerUpdate() {
         panelCustomerUpdate = viewCustomerUpdate.display();
-        panelCont.add(panelCustomerUpdate, "3");
+        panelCont.add(panelCustomerUpdate, "9");
     }
 
 }

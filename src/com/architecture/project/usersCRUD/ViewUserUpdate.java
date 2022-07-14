@@ -105,7 +105,7 @@ public class ViewUserUpdate {
                 String pwd = passwordField.getText();
                 String pwdConfirm = passwordConfirmField.getText();
 
-                List<Object> answer= MainApplication.controllerUser.UpdateUser(MainApplication.updateId, surname, name, admin, login, pwd, pwdConfirm);
+                List<Object> answer= MainApplication.controllerUser.UpdateUser(surname, name, admin, login, pwd, pwdConfirm);
                 Boolean success = (Boolean) answer.get(0);
                 String errorMessage = (String) answer.get(1);
 

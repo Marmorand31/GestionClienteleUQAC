@@ -1,4 +1,4 @@
-package com.architecture.project.clientsCRUD;
+package com.architecture.project.customersCRUD;
 
 import com.architecture.project.MainApplication;
 

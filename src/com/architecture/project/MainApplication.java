@@ -2,7 +2,7 @@ package com.architecture.project;
 
 
 import com.architecture.project.authentication.ControllerAuthentication;
-import com.architecture.project.clientsCRUD.ControllerCustomer;
+import com.architecture.project.customersCRUD.ControllerCustomer;
 import com.architecture.project.usersCRUD.ControllerUser;
 
 import java.sql.Connection;
