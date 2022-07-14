@@ -140,7 +140,10 @@ public class Accueil {
             this.RefreshUserDisplay();
             cl.show(panelCont, "5");
         }
-        if (cmd == "creation") cl.show(panelCont, "6");
+        if (cmd == "creation") {
+            this.RefreshUserCreation();
+            cl.show(panelCont, "6");
+        }
         if (cmd == "update") {
             this.RefreshUserUpdate();
             cl.show(panelCont, "7");
@@ -149,6 +152,10 @@ public class Accueil {
     public void RefreshUserDisplay() {
         panelUserDisplay = viewUserDisplay.display();
         panelCont.add(panelUserDisplay, "5");
+    }
+    public void RefreshUserCreation() {
+        panelUserCreation = viewUserCreation.display();
+        panelCont.add(panelUserCreation, "6");
     }
     public void RefreshUserUpdate() {
         panelUserUpdate = viewUserUpdate.display();

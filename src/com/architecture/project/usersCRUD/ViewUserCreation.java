@@ -76,13 +76,6 @@ public class ViewUserCreation {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                errorLabel.setText("");
-                surnameField.setText("");
-                nameField.setText("");
-                adminCheckB.setSelected(false);
-                loginField.setText("");
-                passwordField.setText("");
-                passwordConfirmField.setText("");
                 MainApplication.accueil.UserCRUD("display");
             }
         });
@@ -105,13 +98,6 @@ public class ViewUserCreation {
 
                 if(success) {
                     MainApplication.accueil.UserCRUD("display");
-                    surnameField.setText("");
-                    nameField.setText("");
-                    adminCheckB.setSelected(false);
-                    loginField.setText("");
-                    passwordField.setText("");
-                    passwordConfirmField.setText("");
-
                 } else {
                     errorLabel.setText(errorMessage);
                 }
