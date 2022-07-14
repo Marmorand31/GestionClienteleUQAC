@@ -27,7 +27,7 @@ public class ViewLogIn {
         JLabel passwordLabel = new JLabel("Mot de passe");
         passwordLabel.setBounds(300,270, 100, 25);
         panelLogin.add(passwordLabel);
-        JTextField passwordField = new JTextField();
+        JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(390,270, 100, 25);
         panelLogin.add(passwordField);
 

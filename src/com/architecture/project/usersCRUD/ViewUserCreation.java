@@ -49,14 +49,14 @@ public class ViewUserCreation {
         JLabel passwordLabel = new JLabel("Mot de passe");
         passwordLabel.setBounds(300,310, 100, 25);
         panelUCreation.add(passwordLabel);
-        JTextField passwordField = new JTextField();
+        JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(390,310, 100, 25);
         panelUCreation.add(passwordField);
 
         JLabel passwordConfirmLabel = new JLabel("Confirmation du mot de passe");
         passwordConfirmLabel.setBounds(210,350, 200, 25);
         panelUCreation.add(passwordConfirmLabel);
-        JTextField passwordConfirmField = new JTextField();
+        JPasswordField passwordConfirmField = new JPasswordField();
         passwordConfirmField.setBounds(390,350, 100, 25);
         panelUCreation.add(passwordConfirmField);
 
