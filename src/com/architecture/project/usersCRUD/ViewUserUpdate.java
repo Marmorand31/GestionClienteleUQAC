@@ -75,7 +75,6 @@ public class ViewUserUpdate {
         panelUserUpdate.add(errorLabel);
 
         List<Object> answer = MainApplication.controllerUser.selectFromId(MainApplication.updateId);
-        System.out.println(answer);
         if ((Boolean) answer.get(0)) {
             surnameField.setText((String) answer.get(1));
             nameField.setText((String) answer.get(2));
@@ -90,13 +89,6 @@ public class ViewUserUpdate {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                errorLabel.setText("");
-                surnameField.setText("");
-                nameField.setText("");
-                adminCheckB.setSelected(false);
-                loginField.setText("");
-                passwordField.setText("");
-                passwordConfirmField.setText("");
                 MainApplication.accueil.UserCRUD("display");
             }
         });
@@ -113,19 +105,12 @@ public class ViewUserUpdate {
                 String pwd = passwordField.getText();
                 String pwdConfirm = passwordConfirmField.getText();
 
-                List<Object> answer= MainApplication.controllerUser.CreateUser(surname, name, admin, login, pwd, pwdConfirm);
+                List<Object> answer= MainApplication.controllerUser.UpdateUser(MainApplication.updateId, surname, name, admin, login, pwd, pwdConfirm);
                 Boolean success = (Boolean) answer.get(0);
                 String errorMessage = (String) answer.get(1);
 
                 if(success) {
                     MainApplication.accueil.UserCRUD("display");
-                    surnameField.setText("");
-                    nameField.setText("");
-                    adminCheckB.setSelected(false);
-                    loginField.setText("");
-                    passwordField.setText("");
-                    passwordConfirmField.setText("");
-
                 } else {
                     errorLabel.setText(errorMessage);
                 }
