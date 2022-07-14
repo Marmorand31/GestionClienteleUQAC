@@ -83,8 +83,20 @@ public class ViewUserDisplay {
         delButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                MainApplication.controllerUser.DeleteUser(Integer.valueOf(delTextField.getText()));
-                MainApplication.accueil.UserCRUD("display");
+                String deleteIdText = delTextField.getText();
+                if (deleteIdText == null || deleteIdText.isBlank()) {
+                    errorLabel.setText("L'identifiant ne doit pas être vide.");
+                } else {
+                    try {
+                        int deleteIdInt = Integer.parseInt(deleteIdText);
+
+                        MainApplication.controllerUser.DeleteUser(deleteIdInt);
+                        MainApplication.accueil.UserCRUD("display");
+                    } catch (NumberFormatException e) {
+                        System.out.println(e.getMessage());
+                        errorLabel.setText("L'identifiant doit être un nombre entier.");
+                    }
+                }
             }
         });
 

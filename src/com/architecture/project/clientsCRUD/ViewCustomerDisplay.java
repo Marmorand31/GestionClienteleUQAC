@@ -5,6 +5,7 @@ package com.architecture.project.clientsCRUD;
 import com.architecture.project.MainApplication;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,13 +34,26 @@ public class ViewCustomerDisplay {
         addButton.setBounds(30,100,180,30);
         panelCustomerDisplay.add(addButton);
 
-        JButton delButton = new JButton("Supprimer un utilisateur");
-        delButton.setBounds(250,100,180,30);
+        JButton updateButton = new JButton("Modifier un client");
+        updateButton.setBounds(250,100,180,30);
+        panelCustomerDisplay.add(updateButton);
+
+        JTextField updateTextField = new JTextField("");
+        updateTextField.setBounds(440,100,30,30);
+        panelCustomerDisplay.add(updateTextField);
+
+        JButton delButton = new JButton("Supprimer un client");
+        delButton.setBounds(510,100,180,30);
         panelCustomerDisplay.add(delButton);
 
         JTextField delTextField = new JTextField("");
-        delTextField.setBounds(440,100,30,30);
+        delTextField.setBounds(700,100,30,30);
         panelCustomerDisplay.add(delTextField);
+
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setBounds(180,140, 450, 25);
+        errorLabel.setForeground(Color.red);
+        panelCustomerDisplay.add(errorLabel);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -51,8 +65,20 @@ public class ViewCustomerDisplay {
         delButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                MainApplication.controllerCustomer.DeleteUser(Integer.valueOf(delTextField.getText()));
-                MainApplication.accueil.CustomerCRUD("display");
+                String deleteIdText = delTextField.getText();
+                if (deleteIdText == null || deleteIdText.isBlank()) {
+                    errorLabel.setText("L'identifiant ne doit pas être vide.");
+                } else {
+                    try {
+                        int deleteIdInt = Integer.parseInt(deleteIdText);
+
+                        MainApplication.controllerCustomer.DeleteCustomer(deleteIdInt);
+                        MainApplication.accueil.CustomerCRUD("display");
+                    } catch (NumberFormatException e) {
+                        System.out.println(e.getMessage());
+                        errorLabel.setText("L'identifiant doit être un nombre entier.");
+                    }
+                }
             }
         });
 
@@ -63,7 +89,7 @@ public class ViewCustomerDisplay {
         JTable table = new JTable(data,columns);
         table.setFillsViewportHeight(true);
         JScrollPane js = new JScrollPane(table);
-        js.setBounds(50,150,700,400);
+        js.setBounds(50,170,700,350);
         panelCustomerDisplay.add(js);
 
         return panelCustomerDisplay;

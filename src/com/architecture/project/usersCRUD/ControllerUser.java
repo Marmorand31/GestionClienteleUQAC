@@ -153,7 +153,6 @@ public class ControllerUser {
     }
     public void DeleteUser(int id){
         String sql = "DELETE FROM User WHERE ID = " + id;
-        System.out.println(sql);
 
         try {
             Statement stmt = MainApplication.bddUserConn.createStatement();
