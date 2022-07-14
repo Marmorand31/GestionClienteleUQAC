@@ -62,6 +62,27 @@ public class ViewCustomerDisplay {
             }
         });
 
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                String updateIdText = updateTextField.getText();
+                MainApplication.updateId = 0;
+                if (updateIdText == null || updateIdText.isBlank()) {
+                    errorLabel.setText("L'identifiant ne doit pas être vide.");
+                } else {
+                    try {
+                        int updateIdInt = Integer.parseInt(updateIdText);
+
+                        MainApplication.updateId = updateIdInt;
+                        MainApplication.accueil.CustomerCRUD("update");
+                    } catch (NumberFormatException e) {
+                        System.out.println(e.getMessage());
+                        errorLabel.setText("L'identifiant doit être un nombre entier.");
+                    }
+                }
+            }
+        });
+
         delButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {

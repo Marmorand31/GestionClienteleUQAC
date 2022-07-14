@@ -64,6 +64,7 @@ public class ViewUserDisplay {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 String updateIdText = updateTextField.getText();
+                MainApplication.updateId = 0;
                 if (updateIdText == null || updateIdText.isBlank()) {
                     errorLabel.setText("L'identifiant ne doit pas être vide.");
                 } else {

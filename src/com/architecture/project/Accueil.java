@@ -31,8 +31,8 @@ public class Accueil {
     ViewUserDisplay viewUserDisplay = new ViewUserDisplay();
     ViewUserCreation viewUserCreation = new ViewUserCreation();
     ViewCustomerCreation viewCustomerCreation = new ViewCustomerCreation();
-
     ViewUserUpdate viewUserUpdate = new ViewUserUpdate();
+    ViewUserUpdate viewCustomerUpdate = new ViewUserUpdate();
 
 
     JPanel panelLogIn;
@@ -43,6 +43,7 @@ public class Accueil {
     JLabel errorLabel = new JLabel("");
     JPanel panelCustomerCreation;
     JPanel panelUserUpdate;
+    JPanel panelCustomerUpdate;
 
 
     public Accueil() {
@@ -72,6 +73,7 @@ public class Accueil {
         panelUserCreation = viewUserCreation.display();
         panelCustomerCreation = viewCustomerCreation.display();
         panelUserUpdate = viewUserUpdate.display();
+        panelCustomerUpdate = viewCustomerUpdate.display();
 
         panelCont.add(panelHome, "1");
         panelCont.add(panelLogIn, "2");
@@ -81,7 +83,7 @@ public class Accueil {
         panelCont.add(panelUserCreation, "6");
         panelCont.add(panelUserUpdate, "7");
         panelCont.add(panelCustomerCreation, "8");
-        //9 for customer update
+        panelCont.add(panelCustomerUpdate, "9");
 
         cl.show(panelCont, "2");
 
@@ -167,11 +169,26 @@ public class Accueil {
             this.RefreshCustomerDisplay();
             cl.show(panelCont, "3");
         }
-        if (cmd == "creation") cl.show(panelCont, "8");
-//        if (cmd == "update") cl.show(panelCont, "9");         A créer
+        if (cmd == "creation"){
+            this.RefreshCustomerCreation();
+            cl.show(panelCont, "8");
+        }
+        if (cmd == "update"){
+            this.RefreshCustomerUpdate();
+            cl.show(panelCont, "9");
+        }
     }
     public void RefreshCustomerDisplay() {
         panelCustomerDisplay = viewCustomerDisplay.display();
         panelCont.add(panelCustomerDisplay, "3");
     }
+    public void RefreshCustomerCreation() {
+        panelCustomerCreation = viewCustomerCreation.display();
+        panelCont.add(panelCustomerCreation, "8");
+    }
+    public void RefreshCustomerUpdate() {
+        panelCustomerUpdate = viewCustomerUpdate.display();
+        panelCont.add(panelCustomerUpdate, "3");
+    }
+
 }
