@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Accueil {
-    JFrame frame = new JFrame("CardLayout demo");
+    JFrame frame = new JFrame("GestionClienteleUQAC");
     JPanel panelCont = new JPanel();
     JPanel panelHome = new JPanel();
     JButton bLogOut = new JButton("Deconnexion");
@@ -106,7 +106,7 @@ public class Accueil {
         bCustomerSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                cl.show(panelCont, "4");
+                //cl.show(panelCont, "4");
             }
         });
 
