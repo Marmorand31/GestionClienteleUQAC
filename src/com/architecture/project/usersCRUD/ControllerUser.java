@@ -8,6 +8,32 @@ import java.util.List;
 
 public class ControllerUser {
 
+    public List<Object> selectFromId(int id) {
+        String sql = "SELECT * FROM User WHERE ID = "+id;
+        Boolean success = false;
+        String surname = "";
+        String name = "";
+        boolean admin = false;
+        String login = "";
+
+        try {
+            Statement stmt = MainApplication.bddUserConn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            rs.next();
+            surname = rs.getString("surname");
+            name = rs.getString("name");
+            admin = rs.getInt("admin") == 1;
+            login = rs.getString("login");
+            success = true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return Arrays.asList(success, surname, name, admin, login);
+    }
+
     public Object[][] selectAll() {
         String sql = "SELECT * FROM User";
         int size = numberofUsers();
@@ -100,4 +126,5 @@ public class ControllerUser {
         }
 
     }
+
 }

@@ -1,6 +1,8 @@
 package com.architecture.project.usersCRUD;
 
 import com.architecture.project.MainApplication;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -30,18 +32,51 @@ public class ViewUserDisplay {
         addButton.setBounds(30,100,180,30);
         panelUserDisplay.add(addButton);
 
+        JButton updateButton = new JButton("Modifier un utilisateur");
+        updateButton.setBounds(250,100,180,30);
+        panelUserDisplay.add(updateButton);
+
+        JTextField updateTextField = new JTextField("");
+        updateTextField.setBounds(440,100,30,30);
+        panelUserDisplay.add(updateTextField);
+
         JButton delButton = new JButton("Supprimer un utilisateur");
-        delButton.setBounds(250,100,180,30);
+        delButton.setBounds(510,100,180,30);
         panelUserDisplay.add(delButton);
 
         JTextField delTextField = new JTextField("");
-        delTextField.setBounds(440,100,30,30);
+        delTextField.setBounds(700,100,30,30);
         panelUserDisplay.add(delTextField);
+
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setBounds(180,140, 450, 25);
+        errorLabel.setForeground(Color.red);
+        panelUserDisplay.add(errorLabel);
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 MainApplication.accueil.UserCRUD("creation");
+            }
+        });
+
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                String updateIdText = updateTextField.getText();
+                if (updateIdText == null || updateIdText.isBlank()) {
+                    errorLabel.setText("L'identifiant ne doit pas être vide.");
+                } else {
+                    try {
+                        int updateIdInt = Integer.parseInt(updateIdText);
+
+                        MainApplication.updateId = updateIdInt;
+                        MainApplication.accueil.UserCRUD("update");
+                    } catch (NumberFormatException e) {
+                        System.out.println(e.getMessage());
+                        errorLabel.setText("L'identifiant doit être un nombre entier.");
+                    }
+                }
             }
         });
 
@@ -60,7 +95,7 @@ public class ViewUserDisplay {
         JTable table = new JTable(data,columns);
         table.setFillsViewportHeight(true);
         JScrollPane js = new JScrollPane(table);
-        js.setBounds(50,150,700,400);
+        js.setBounds(50,170,700,350);
         panelUserDisplay.add(js);
 
         return panelUserDisplay;

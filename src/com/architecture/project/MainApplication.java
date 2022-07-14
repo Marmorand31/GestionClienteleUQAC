@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class MainApplication {
     public static boolean loggedIn = false;
     public static boolean adminRole = false;
+    public static int updateId = 0;
     public static Accueil accueil;
     public static ControllerAuthentication controllerAuthentication;
     public static ControllerUser controllerUser;
@@ -32,9 +33,6 @@ public class MainApplication {
         controllerUser = new ControllerUser();
         controllerCustomer = new ControllerCustomer();
         accueil = new Accueil();
-        // Test database connection
-//        Select CustomerTableSelect = new Select("Customers");
-//        CustomerTableSelect.selectAll();
 
     }
 

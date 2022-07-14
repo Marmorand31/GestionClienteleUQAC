@@ -6,6 +6,7 @@ import com.architecture.project.clientsCRUD.ViewCustomerDisplay;
 import com.architecture.project.searchTool.ViewSearchTool;
 import com.architecture.project.usersCRUD.ViewUserCreation;
 import com.architecture.project.usersCRUD.ViewUserDisplay;
+import com.architecture.project.usersCRUD.ViewUserUpdate;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,8 @@ public class Accueil {
     ViewUserCreation viewUserCreation = new ViewUserCreation();
     ViewCustomerCreation viewCustomerCreation = new ViewCustomerCreation();
 
+    ViewUserUpdate viewUserUpdate = new ViewUserUpdate();
+
 
     JPanel panelLogIn;
     JPanel panelCustomerDisplay;
@@ -39,6 +42,7 @@ public class Accueil {
     JPanel panelUserCreation;
     JLabel errorLabel = new JLabel("");
     JPanel panelCustomerCreation;
+    JPanel panelUserUpdate;
 
 
     public Accueil() {
@@ -67,6 +71,7 @@ public class Accueil {
         panelUserDisplay = viewUserDisplay.display();
         panelUserCreation = viewUserCreation.display();
         panelCustomerCreation = viewCustomerCreation.display();
+        panelUserUpdate = viewUserUpdate.display();
 
         panelCont.add(panelHome, "1");
         panelCont.add(panelLogIn, "2");
@@ -74,7 +79,7 @@ public class Accueil {
         panelCont.add(panelUSearchTool, "4");
         panelCont.add(panelUserDisplay, "5");
         panelCont.add(panelUserCreation, "6");
-        //7 for user update
+        panelCont.add(panelUserUpdate, "7");
         panelCont.add(panelCustomerCreation, "8");
         //9 for customer update
 
@@ -136,12 +141,18 @@ public class Accueil {
             cl.show(panelCont, "5");
         }
         if (cmd == "creation") cl.show(panelCont, "6");
-//        if (cmd == "update") cl.show(panelCont, "7");         A créer
-
+        if (cmd == "update") {
+            this.RefreshUserUpdate();
+            cl.show(panelCont, "7");
+        }
     }
     public void RefreshUserDisplay() {
         panelUserDisplay = viewUserDisplay.display();
         panelCont.add(panelUserDisplay, "5");
+    }
+    public void RefreshUserUpdate() {
+        panelUserUpdate = viewUserUpdate.display();
+        panelCont.add(panelUserUpdate, "7");
     }
 
     public void CustomerCRUD(String cmd) {
